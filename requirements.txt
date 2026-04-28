@@ -1,0 +1,17 @@
+torch
+torchvision
+tqdm
+scikit-learn
+joblib
+scipy
+numpy
+ptflops
+pandas
+matplotlib
+transformers>=4.40,<4.50
+accelerate
+torchaudio
+evaluate
+datasets==3.1.0
+fsspec[http]>=2023.1.0,<=2024.9.0
+seaborn

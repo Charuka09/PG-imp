@@ -2,3 +2,4 @@ venv/
 .venv/
 env/
 Bert/agnews/
+CNN/cifar100_original_pipeline/data/
