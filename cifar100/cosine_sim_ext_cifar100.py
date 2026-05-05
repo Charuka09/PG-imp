@@ -18,8 +18,8 @@ MAX_SAMPLES = 50
 
 MODELS = {
     # "conv2net": LAYERS["conv2net"],
-    "conv6net": LAYERS["conv6net"],
-    # "vgg16":    LAYERS["vgg16"],
+    # "conv6net": LAYERS["conv6net"],
+    "vgg16":    LAYERS["vgg16"],
 }
 
 

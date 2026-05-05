@@ -1,0 +1,2 @@
+method,model,seed,threshold,kept_conv1,kept_conv2,kept_conv3,kept_conv4,kept_conv5,kept_conv6,pruned_conv1_pct,pruned_conv2_pct,pruned_conv3_pct,pruned_conv4_pct,pruned_conv5_pct,pruned_conv6_pct,total_param_red_pct,pre_acc,val_acc,epochs,early_stop,flops,flops_red_pct,params,ece
+pg,conv6net,42,0.7000,21,24,46,46,90,92,34.3750,25.0000,28.1250,28.1250,29.6875,28.1250,51.9431,1.0400,44.4000,112,True,41221832,48.1583,402788,0.0697

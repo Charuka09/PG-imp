@@ -1,0 +1,2 @@
+method,model,prune_ratio,seed,pre_acc,val_acc,epochs,early_stop,flops,flops_red_pct,params,param_red_pct,ece,kept_conv1,kept_conv2,pruned_conv1_pct,pruned_conv2_pct
+snows,conv2net,0.7000,42,1.0000,33.6900,99,True,5343432,87.8126,486500,70.6589,0.0496,10,19,68.7500,70.3125

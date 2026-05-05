@@ -25,9 +25,9 @@ T      = 0.5
 SIGMA  = 0.1
 
 MODELS = {
-    "conv2net": [PG_FC_LAYER["conv2net"]],
+    # "conv2net": [PG_FC_LAYER["conv2net"]],
     # "conv6net": [PG_FC_LAYER["conv6net"]],
-    # "vgg16":    [PG_FC_LAYER["vgg16"]],
+    "vgg16":    [PG_FC_LAYER["vgg16"]],
 }
 
 

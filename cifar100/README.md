@@ -57,6 +57,16 @@ python hrank_cifar100.py          # Step 5 – HRank pruning
 python pg_pruning_cifar100.py     # Step 6 – PG pruning
 ```
 
+## Running baselines
+
+```bash
+cd /home/lunet/llckbhk/Documents/PG-imp
+.venv/bin/python cifar100/svd_pruning_cifar100.py --models conv2net conv6net vgg16 --ratios 0.7
+.venv/bin/python cifar100/sliming_pruning_cifar100.py --models conv2net conv6net vgg16 --ratios 0.7
+.venv/bin/python cifar100/snows_pruning_cifar100.py --models conv2net conv6net vgg16 --ratios 0.7
+
+```
+
 Output root: `./pg_project_output/` — change `BASE_DIR` in `config.py`.
 
 ---

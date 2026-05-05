@@ -4,13 +4,14 @@ config.py – Central configuration for the CIFAR-100 PG-pruning project.
 
 import os
 
-BASE_DIR           = "./pg_project_output"
+HERE               = os.path.dirname(os.path.abspath(__file__))
+BASE_DIR           = os.path.join(HERE, "pg_project_output")
 TRAINED_MODELS_DIR = os.path.join(BASE_DIR, "trained_models")
 ACTIVATIONS_DIR    = os.path.join(BASE_DIR, "activations")
 AFFINITY_DIR       = os.path.join(BASE_DIR, "affinity_matrices")
 PG_DIR             = os.path.join(BASE_DIR, "pg_data")
 RESULTS_DIR        = os.path.join(BASE_DIR, "results")
-DATA_DIR           = "./data"
+DATA_DIR           = os.path.join(HERE, "data")
 
 for _d in [TRAINED_MODELS_DIR, ACTIVATIONS_DIR, AFFINITY_DIR,
            PG_DIR, RESULTS_DIR, DATA_DIR]:

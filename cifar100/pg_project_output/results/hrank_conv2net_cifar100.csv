@@ -1,0 +1,2 @@
+method,model,prune_ratio,seed,pre_acc,val_acc,epochs,early_stop,flops,flops_red_pct,params,param_red_pct,ece,kept_conv1,kept_conv2,pruned_conv1_pct,pruned_conv2_pct
+hrank,conv2net,0.2000,42,1.0500,47.5800,78,True,28326088,35.3931,1305700,21.2525,0.0150,25,51,21.8750,20.3125

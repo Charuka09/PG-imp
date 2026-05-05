@@ -9,5 +9,9 @@ CNN/cifar100_original_pipeline/activations/
 data/
 _archive/
 cifar100/data/
-cifar100/pg_project_output/
+cifar100/pg_project_output/activations/
+cifar100/pg_project_output/affinity_matrices/
+cifar100/pg_project_output/pg_data/
+cifar100/pg_project_output/results/pruned_models/
+cifar100/pg_project_output/trained_models/
 cifar100_pg_gpu.zip

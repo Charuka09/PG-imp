@@ -35,7 +35,7 @@ torch.backends.cudnn.deterministic = True
 device     = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 BATCH      = 128
 PCA_COMPS  = 8
-THRESHOLDS = [0.1, 0.2, 0.3, 0.4, 0.5]
+THRESHOLDS = [0.7, 0.2, 0.3, 0.4, 0.5, 0.6, 0.1, 0.8, 0.9]
 PIN_MEMORY = (device.type == "cuda")
 
 train_loader = DataLoader(
@@ -261,7 +261,7 @@ def run_pg(model_name):
 
 
 # for mn in ["conv2net", "conv6net", "vgg16"]:
-for mn in ["conv2net"]:
+for mn in ["vgg16"]:
     run_pg(mn)
 
 print("\n✅  PG pruning complete")
