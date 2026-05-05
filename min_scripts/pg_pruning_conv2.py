@@ -42,8 +42,8 @@ torch.backends.cudnn.benchmark = False
 # ----------------------------
 device = torch.device('cuda:1' if torch.cuda.is_available() else 'cpu')
 num_classes = 10
-pg_folder = Path("/home/charuka09/Documents/postPhD/mindula/icml/pg_multi_models_2/conv2net/")
-model_path = "/home/charuka09/Documents/postPhD/mindula/icml/models/conv2_best.pth"
+pg_folder = Path("/home/mindula/Desktop/moving_forward_results/pg_multi_models/conv2net/")
+model_path = "/home/mindula/Desktop/moving_forward_results/trained_models_new/conv2_best.pth"
 
 prune_thresholds = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
 patience = 10
@@ -51,7 +51,7 @@ epochs_max = 200
 batch_size = 128
 pca_n_components = 4
 
-csv_path = "/home/charuka09/Documents/postPhD/mindula/icml/pruning_results/pg_pruning_results_conv2.csv"
+csv_path = "/home/mindula/Desktop/moving_forward_results/pg_pruning_results_conv2.csv"
 file_exists = os.path.exists(csv_path)
 
 # ----------------------------
@@ -307,5 +307,5 @@ for thr1, thr2 in itertools.product(prune_thresholds, prune_thresholds):
     df.to_csv(csv_path, mode='a', index=False, header=not file_exists)
     file_exists = True
 
-print("\n Results saved to pg_pruning_results_conv2.csv")
+print("\n💾 Results saved to pg_pruning_results_conv2.csv ✅")
 

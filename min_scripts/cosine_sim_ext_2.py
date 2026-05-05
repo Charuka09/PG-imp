@@ -20,7 +20,7 @@ import matplotlib.pyplot as plt
 # Config
 # -------------------
 models = ["conv2net", "conv6net", "lenet"]
-base_load_dir = "/home/charuka09/Documents/postPhD/mindula/icml/activations"
+base_load_dir = "/home/mindula/Desktop/moving_forward_results/activations_full"
 layers_dict = {
     "conv2net": ['pool', 'fc'],
     "conv6net": ['pool1', 'pool2', 'pool3', 'fc1', 'fc2'],
@@ -31,7 +31,7 @@ sigma = 0.1
 eps = 1e-6
 chunk_size = 256
 
-save_dir = "/home/charuka09/Documents/postPhD/mindula/icml/w_fc_maps_dual"
+save_dir = "/home/mindula/Desktop/moving_forward_results/w_fc_maps_dual"
 os.makedirs(save_dir, exist_ok=True)
 
 # -------------------

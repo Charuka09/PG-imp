@@ -3,3 +3,11 @@ venv/
 env/
 Bert/agnews/
 CNN/cifar100_original_pipeline/data/
+CNN/cifar100_original_pipeline/activations/
+.local/
+.vscode/
+data/
+_archive/
+cifar100/data/
+cifar100/pg_project_output/
+cifar100_pg_gpu.zip

@@ -18,8 +18,8 @@ layers_dict = {
     "lenet": ['fc1', 'fc2']
 }
 
-base_load_dir = "/home/charuka09/Documents/postPhD/mindula/icml/activations"
-output_base = "/home/charuka09/Documents/postPhD/mindula/icml/pg_multi_models_2"
+base_load_dir = "/home/mindula/Desktop/moving_forward_results/activations_full"
+output_base = "/home/mindula/Desktop/moving_forward_results/pg_multi_models_2"
 os.makedirs(output_base, exist_ok=True)
 
 max_samples = 50
@@ -146,7 +146,7 @@ total_end = time.time()
 # Pretty Summary
 # ----------------------------
 print("\n==========================")
-print("PG1 COMPUTE SUMMARY")
+print("🔥 PG1 COMPUTE SUMMARY 🔥")
 print("==========================")
 
 for model_name, dsets in summary.items():

@@ -4,13 +4,10 @@ from torchvision import datasets, transforms
 from torch.utils.data import Subset, DataLoader
 from tqdm import tqdm
 from models import Conv2Net, Conv6Net, LeNet300_100
-from load_models import load_conv2net_from_pth, load_conv6net_from_pth, load_lenet_from_pth
 
 # -------------------
-# Helper functions 
+# 💾 Helper functions 
 # -------------------
-
-
 def save_activations_per_input(model, layer_names, inputs, labels, save_dir, device='cpu',
                                prefix="sample", counters=None, max_per_class=100):
     """
@@ -89,16 +86,16 @@ def select_n_per_class(dataset, n=1000):
 
 
 # -------------------
-# Config
+# ⚙️ Config
 # -------------------
 
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
-base_activation_dir = "/home/charuka09/Documents/postPhD/mindula/icml/activations"
+base_activation_dir = "/home/mindula/Desktop/pg_experiments_latest/pruning_exp/multiple_network_lab/moving_forward_results/activations_full"
 os.makedirs(base_activation_dir, exist_ok=True)
 
 
 # -------------------
-# CIFAR10 setup
+# 🎨 CIFAR10 setup
 # -------------------
 
 cifar_transform = transforms.Compose([
@@ -117,22 +114,20 @@ subset_cifar = select_n_per_class(cifar_dataset, n=1000)
 
 models_cifar = {
     "conv2net": (
-        # load_conv2net_from_pth("/home/charuka09/Documents/postPhD/mindula/icml/models/conv2_best.pth", device=device),
-        Conv2Net().to(device),
+        Conv2Net(num_classes=10),
         ['conv1', 'conv2', 'pool', 'fc'],
-        "/home/charuka09/Documents/postPhD/mindula/icml/models/conv2_best.pth"
+        "/home/mindula/Desktop/pg_experiments_latest/pruning_exp/multiple_network_lab/moving_forward_results/trained_models_new/conv2_best.pth"
     ),
     "conv6net": (
-        # load_conv6net_from_pth("/home/charuka09/Documents/postPhD/mindula/icml/models/conv6_best.pth", device=device),
-        Conv6Net().to(device),
+        Conv6Net(num_classes=10),
         ['conv1', 'conv2', 'conv3', 'conv4', 'conv5', 'conv6',
          'pool1', 'pool2', 'pool3', 'fc1', 'fc2'],
-        "/home/charuka09/Documents/postPhD/mindula/icml/models/conv6_best.pth"
+        "/home/mindula/Desktop/pg_experiments_latest/pruning_exp/multiple_network_lab/moving_forward_results/trained_models_new/conv6_best.pth"
     )
 }
 
 for model_name, (model, layers, path) in models_cifar.items():
-    print(f"\n Extracting activations for {model_name.upper()}...")
+    print(f"\n🔥 Extracting activations for {model_name.upper()}...")
     model.load_state_dict(torch.load(path, map_location=device))
     save_base = os.path.join(base_activation_dir, model_name)
     os.makedirs(save_base, exist_ok=True)
@@ -147,7 +142,7 @@ for model_name, (model, layers, path) in models_cifar.items():
         save_dir = os.path.join(save_base, f"class_{class_id}")
         os.makedirs(save_dir, exist_ok=True)
 
-        print(f" Class {class_id}...")
+        print(f"  🎯 Class {class_id}...")
         for batch_idx, (inputs, labels) in enumerate(tqdm(class_loader, desc=f"{model_name} | class {class_id}", leave=False)):
             counters = save_activations_per_input(
                 model, layers, inputs, labels, save_dir,
@@ -158,7 +153,7 @@ for model_name, (model, layers, path) in models_cifar.items():
 
 
 # -------------------
-# MNIST setup: LeNet
+# 🧮 MNIST setup: LeNet
 # -------------------
 
 mnist_transform = transforms.Compose([
@@ -169,16 +164,16 @@ mnist_transform = transforms.Compose([
 mnist_dataset = datasets.MNIST(root='./data', train=True, download=True, transform=mnist_transform)
 subset_mnist = select_n_per_class(mnist_dataset, n=1000)
 
-lenet_model = LeNet300_100().to(device)
+lenet_model = LeNet300_100(num_classes=10)
 lenet_model.load_state_dict(torch.load(
-    "/home/charuka09/Documents/postPhD/mindula/icml/models/lenet300_100_best.pth",
+    "/home/mindula/Desktop/pg_experiments_latest/pruning_exp/multiple_network_lab/moving_forward_results/trained_models_new/lenet300_100_best.pth",
     map_location=device
 ))
 lenet_layers = ['fc1', 'fc2']
 lenet_save_base = os.path.join(base_activation_dir, "lenet")
 os.makedirs(lenet_save_base, exist_ok=True)
 
-print(f"\n Extracting activations for LENET...")
+print(f"\n🔥 Extracting activations for LENET...")
 for class_id in range(10):
     counters = {'correct': 0, 'incorrect': 0}
 
@@ -189,7 +184,7 @@ for class_id in range(10):
     save_dir = os.path.join(lenet_save_base, f"class_{class_id}")
     os.makedirs(save_dir, exist_ok=True)
 
-    print(f" Class {class_id}...")
+    print(f"  🎯 Class {class_id}...")
     for batch_idx, (inputs, labels) in enumerate(tqdm(class_loader, desc=f"lenet | class {class_id}", leave=False)):
         counters = save_activations_per_input(
             lenet_model, lenet_layers, inputs, labels, save_dir,
